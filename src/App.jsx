@@ -1,19 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ProductCard from './components/productCard'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginPage from './pages/loginPage';
+import HomePage from './pages/homePage';
+import RegisterPage from './pages/registerPage';
+import AdminPage from './pages/adminPage';
+import TextPage from './pages/textPage';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <ProductCard name='Asus Tuf' price='275,000LKR' image='https://www.asus.com/media/Odin/Websites/global/Series/33/P_setting_xxx_0_90_end_185.png?webp'/>
-      <ProductCard name='Redmi 13C' price='95,000LKR' image='https://fdn2.gsmarena.com/vv/bigpic/xiaomi-redmi-13c.jpg'/>
-      <ProductCard name='Asus Tuf' price='275,000LKR' image='https://www.asus.com/media/Odin/Websites/global/Series/33/P_setting_xxx_0_90_end_185.png?webp'/>
-    </>
-  )
+    <BrowserRouter>
+      <div className="w-full h-screen bg-primary text-secondary">
+        <Routes>
+          <Route path="/*" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin/*" element={<AdminPage />} />
+          <Route path='/text' element={<TextPage/>}/>
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
